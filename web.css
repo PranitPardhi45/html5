@@ -1,0 +1,173 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: url('backimg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+.container {
+    width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.section {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.section.active {
+    display: block;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input, textarea {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: calc(100% - 20px);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.registration-options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.google-btn {
+    background-color: #db4437;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.google-btn i {
+ margin-right: 10px;
+}
+button:hover {
+    background-color: #0056b3;
+}
+.google-btn:hover{
+    background-color: #c23321;
+}
+#webpageList {
+    border: 1px solid #ddd;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+#webpageList div {
+    margin-bottom: 5px;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+#webpageList div:hover {
+   background-color: #e8e8e8
+}
+
+.chatbot-test-overlay{
+    width: 100%;
+    height: 100%;
+    position:relative;
+}
+.chatbot-topbar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #eee;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.chatbot-widget{
+     position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 300px;
+}
+#websiteFrame {
+  width: 100%;
+  height: calc(100% - 100px);
+  border: none;
+}
+.modal-options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.modal-option {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.modal-panel {
+  margin-top: 20px;
+}
+.social-share{
+ display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.social-icon{
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333
+}
+.social-icon:hover{
+    background-color: #eee;
+}
