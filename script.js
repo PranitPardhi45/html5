@@ -12,19 +12,19 @@ function registerUser() {
     const email = document.getElementById('regEmail').value;
     const password = document.getElementById('regPassword').value;
 
-    // In a real app, we'd validate, submit to the backend, and then proceed
+   
      console.log('User Registered:', {name, email});
-      // Generate and store a random verification code (simulated)
+      
     verificationCodeGenerated = generateVerificationCode();
     console.log('Verification Code:', verificationCodeGenerated);
     alert('Verification code sent to your email. Please check console for code.')
-     // In a real app, you would send the code by email using a backend server
+     
      switchSection('verificationSection');
 }
 
 function verifyEmail(){
     const verificationCode = document.getElementById("verificationCode").value
-     // Verify User
+     
      if (verificationCode === verificationCodeGenerated)
      {
          alert("Email Verification successful")
@@ -39,10 +39,9 @@ function setupOrganization() {
     const companyName = document.getElementById('companyName').value;
     const companyUrl = document.getElementById('companyUrl').value;
     const companyDescription = document.getElementById('companyDescription').value;
-   // Fetch meta description (this would be a server side job in a real app)
+   
     console.log('Organization Details:', {companyName, companyUrl});
 
-    // Simulate fetching data from the backend
     const dummyWebpages = [
         { url: 'https://www.example.com/page1', status: 'scraped', id: 1 },
         { url: 'https://www.example.com/page2', status: 'pending', id: 2 },
@@ -54,7 +53,7 @@ function setupOrganization() {
 }
 function populateWebpageList(webpages) {
     const webpageListDiv = document.getElementById('webpageList');
-    webpageListDiv.innerHTML = ''; // clear previous data
+    webpageListDiv.innerHTML = ''; 
 
     webpages.forEach(page => {
         const pageDiv = document.createElement('div');
@@ -63,7 +62,7 @@ function populateWebpageList(webpages) {
         webpageListDiv.appendChild(pageDiv);
     });
 }
-//Simulated data chunk
+
 function showDataChunks(pageId){
     const dummyDataChunks = {
         1: ["Chunk 1 for page 1", "Chunk 2 for page 1", "Chunk 3 for page 1"],
@@ -78,13 +77,13 @@ function showDataChunks(pageId){
     }
 }
 function nextScraping() {
-    //Move to next
+  
     switchSection('integrationSection')
 }
-function testChatbot(){
-    document.getElementById('chatbotTestFrame').classList.remove('hidden');
-    document.getElementById('websiteFrame').src = document.getElementById('companyUrl').value; // set iframe URL
+function testChatbot() {
+    document.getElementById('chatbotContainer').classList.remove('hidden'); // Show chatbot
 }
+
 function integrateChatbot(){
     document.getElementById('integrationModal').classList.remove('hidden');
 }
@@ -110,18 +109,20 @@ function sendMail(){
     alert("Mail sent to "+ email);
     closeModal()
 }
-function testIntegration(){
+
+function testIntegration() {
     document.getElementById('testIntegrationModal').classList.remove('hidden');
+    document.getElementById('testStatus').innerHTML = "Testing integration...";
     setTimeout(() => {
-      if (Math.random() > 0.5) {
-           document.getElementById('testStatus').innerHTML = ""; //clear any initial state
-            document.getElementById('integrationSuccessful').classList.remove('hidden')
-      } else{
-          document.getElementById('testStatus').innerHTML = ""; //clear any initial state
-        document.getElementById('integrationFailed').classList.remove('hidden')
-      }
+        document.getElementById('testStatus').innerHTML = ""; // Clear loading message
+        if (Math.random() > 0.5) {
+            document.getElementById('integrationSuccessful').classList.remove('hidden');
+        } else {
+            document.getElementById('integrationFailed').classList.remove('hidden');
+        }
     }, 2000);
 }
+
 function closeTestModal(){
     document.getElementById('testIntegrationModal').classList.add('hidden');
     document.getElementById('integrationSuccessful').classList.add('hidden');
@@ -142,14 +143,60 @@ function registerUser() {
     const email = document.getElementById('regEmail').value;
     const password = document.getElementById('regPassword').value;
 
-    // In a real app, we'd validate, submit to the backend, and then proceed
     console.log('User Registered:', {name, email});
 
-      // Generate and store a random verification code (simulated)
     verificationCodeGenerated = generateVerificationCode();
     console.log('Verification Code:', verificationCodeGenerated);
 
       alert(`Verification code has been sent to ${email}. The code is: ${verificationCodeGenerated}`);
-     // In a real app, you would send the code by email using a backend server
+    
      switchSection('verificationSection');
 }
+function sendMessage() {
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
+
+    if (chatInput.value.trim() === '') return;
+
+    const userText = chatInput.value.toLowerCase(); 
+    const userMsg = document.createElement('div');
+    userMsg.textContent = "You: " + chatInput.value;
+    userMsg.style.fontWeight = 'bold';
+    chatMessages.appendChild(userMsg);
+
+    chatInput.value = ''; 
+
+    setTimeout(() => {
+        
+        const botMsg = document.createElement('div');
+        botMsg.textContent = "Chatbot: " + getChatbotResponse(userText);
+        chatMessages.appendChild(botMsg);
+    }, 1000);
+}
+
+function getChatbotResponse(input) {
+    const responses = {
+        "hello": "Hi there! How can I assist you?",
+        "hi": "Hello! Need help with something?",
+        "hey": "Hey! How can I support you today?",
+        "how are you": "I'm just a chatbot, but I'm here to help!",
+        "what is beyondchats": "BeyondChats is an AI-powered chatbot platform for businesses.",
+        "tell me about beyondchats": "BeyondChats helps businesses integrate AI chatbots easily with website scraping and training features.",
+        "how does this chatbot work": "This chatbot processes your input and gives predefined responses based on keywords.",
+        "how do i integrate beyondchats": "You can integrate BeyondChats by following the copy-paste instructions in the integration modal.",
+        "how to setup beyondchats": "Simply follow the setup steps: Register > Verify Email > Setup Organization > Scrape Webpages > Integrate Chatbot!",
+        "thank you": "You're welcome! Let me know if you need more help.",
+        "bye": "Goodbye! Have a great day! 😊",
+        "who made you": "I was created by the BeyondChats team to assist users like you!"
+    };
+
+    const fallbackResponses = [
+        "I'm still learning! Can you rephrase that?",
+        "Hmm... I don't have an answer for that yet.",
+        "I'm not sure, but I can try to help!",
+        "That's interesting! Can you give me more details?"
+    ];
+
+    return responses[input] || fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+}
+

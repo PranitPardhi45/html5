@@ -1,130 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeyondChats Setup</title>
     <link rel="stylesheet" href="web.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-    <div class="container">
-        <!-- User Registration Section -->
-        <div id="registrationSection" class="section active">
-            <h2>User Registration</h2>
-            <input type="text" placeholder="Name" id="regName"><br>
-            <input type="email" placeholder="Email" id="regEmail"><br>
-            <input type="password" placeholder="Password" id="regPassword"><br>
-              <div class="registration-options">
-                 <button onclick="registerUser()">Register</button>
+    <div class="main-container">
+        <div class="container">
+            <!-- User Registration Section -->
+            <div id="registrationSection" class="section active">
+                <h2>User Registration</h2>
+                <input type="text" placeholder="Name" id="regName"><br>
+                <input type="email" placeholder="Email" id="regEmail"><br>
+                <input type="password" placeholder="Password" id="regPassword"><br>
+                <div class="registration-options">
+                    <button onclick="registerUser()">Register</button>
                     <a href="#" onclick="forgotPassword()">Forgot Password?</a>
                 </div>
-             <button class="google-btn"><i class="fab fa-google"></i> Continue with Google</button>
-        </div>
-        <div id="verificationSection" class="section hidden">
-            <h2>Email Verification</h2>
-            <p>Please enter the verification code sent to your email.</p>
-            <input type="text" placeholder="Verification Code" id="verificationCode"><br>
-            <button onclick="verifyEmail()">Verify</button>
-        </div>
-
-        <!-- Organization Setup Section -->
-        <div id="organizationSection" class="section hidden">
-            <h2>Setup Organization</h2>
-            <input type="text" placeholder="Company Name" id="companyName"><br>
-            <input type="url" placeholder="Company Website URL" id="companyUrl"><br>
-            <textarea placeholder="Company Description" id="companyDescription"></textarea><br>
-            <button onclick="setupOrganization()">Next</button>
-        </div>
-
-        <!-- Webpage Scraping Section -->
-        <div id="scrapingSection" class="section hidden">
-            <h2>Webpage Scraping</h2>
-            <div id="webpageList">
-                <!-- Dummy data will be inserted here -->
+                <button class="google-btn"><i class="fab fa-google"></i> Continue with Google</button>
             </div>
-            <button onclick="nextScraping()">Next</button>
-        </div>
 
-         <!-- Chatbot Integration Section -->
-        <div id="integrationSection" class="section hidden">
-            <h2>Chatbot Integration</h2>
-            <button onclick="testChatbot()">Test Chatbot</button><br>
-             <button onclick="integrateChatbot()">Integrate on your website</button><br>
-            
+            <!-- Email Verification Section -->
+            <div id="verificationSection" class="section hidden">
+                <h2>Email Verification</h2>
+                <p>Please enter the verification code sent to your email.</p>
+                <input type="text" placeholder="Verification Code" id="verificationCode"><br>
+                <button onclick="verifyEmail()">Verify</button>
             </div>
-         
-        <!-- Website Integration Instructions Modal -->
-        <div id="integrationModal" class="modal hidden">
-            <div class="modal-content">
-              <span class="close" onclick="closeModal()">×</span>
-              <h3>Integrate Chatbot Instructions</h3>
-                
-              <div class="modal-options">
-                <div class="modal-option" onclick="showCopyPasteInstruction()">Copy Paste Instructions</div>
-                <div class="modal-option" onclick="showSendInstructions()">Mail Instructions</div>
-              </div>
-              <div id="copyPaste" class="modal-panel hidden">
-              <p>Copy the following code and paste it within the <code><head></code> section of your website:</p>
-                <pre>
-                <script>
-                    // Dummy Chatbot Integration Code
-                    console.log("Chatbot script loaded");
-                    // ... Actual integration logic would go here ...
-                </script>
-              </pre>
-              </div>
-              <div id="sendInstructions" class="modal-panel hidden">
-                    <p>Enter Developer's Email address to send instructions</p>
-                    <input type="email" placeholder="Developer's Email" id="developerEmail"><br>
-                    <button onclick="sendMail()">Send Mail</button>
-              </div>
-                
+
+            <!-- Organization Setup Section -->
+            <div id="organizationSection" class="section hidden">
+                <h2>Setup Organization</h2>
+                <input type="text" placeholder="Company Name" id="companyName"><br>
+                <input type="url" placeholder="Company Website URL" id="companyUrl"><br>
+                <textarea placeholder="Company Description" id="companyDescription"></textarea><br>
+                <button onclick="setupOrganization()">Next</button>
             </div>
-        </div>
-        
-          <!-- Test Integration Modal -->
-          <div id="testIntegrationModal" class="modal hidden">
-            <div class="modal-content">
-            <span class="close" onclick="closeTestModal()">×</span>
-                <div id="testStatus">
-                    
+
+            <!-- Webpage Scraping Section -->
+            <div id="scrapingSection" class="section hidden">
+                <h2>Webpage Scraping</h2>
+                <div id="webpageList">
+                    <!-- Dummy data will be inserted here -->
                 </div>
-                <div id="integrationSuccessful" class="hidden">
-                    
-                    <img src="./images/confetti.gif" alt="Confetti" style="width: 200px;">
-                    <h3>Integration Successful!</h3>
-                    <button onclick="openAdminPanel()">Explore Admin Panel</button>
-                    <button onclick="startChatting()">Start talking to your chatbot</button>
-                    <div class="social-share">
-                        <a href="#" class="social-icon">Facebook</a>
-                        <a href="#" class="social-icon">Twitter</a>
-                        <a href="#" class="social-icon">LinkedIn</a>
+                <button onclick="nextScraping()">Next</button>
+            </div>
+
+            <!-- Chatbot Integration Section -->
+            <div id="integrationSection" class="section hidden">
+                <h2>Chatbot Integration</h2>
+                <button onclick="integrateChatbot()">Integrate Chatbot</button>
+                <button onclick="testChatbot()">Test Chatbot</button>
+
+                <!-- Chatbot Container (Correct Placement) -->
+                <div id="chatbotContainer" class="hidden">
+                    <h3>Chatbot Preview</h3>
+                    <div id="chatWindow">
+                        <div id="chatMessages"></div>
+                        <input type="text" id="chatInput" placeholder="Type a message..." />
+                        <button onclick="sendMessage()">Send</button>
                     </div>
-                   </div>
+                </div>
+            </div>
+
+            <!-- Website Integration Instructions Modal -->
+            <div id="integrationModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">×</span>
+                    <h3>Integrate Chatbot Instructions</h3>
+
+                    <div class="modal-options">
+                        <div class="modal-option" onclick="showCopyPasteInstruction()">Copy Paste Instructions</div>
+                        <div class="modal-option" onclick="showSendInstructions()">Mail Instructions</div>
+                    </div>
+
+                    <div id="copyPaste" class="modal-panel hidden">
+                        <p>Copy the following code and paste it within the <code><head></code> section of your website:</p>
+                        <pre>
+                        <script>
+                            // Dummy Chatbot Integration Code
+                            console.log("Chatbot script loaded");
+                        </script>
+                        </pre>
+                    </div>
+
+                    <div id="sendInstructions" class="modal-panel hidden">
+                        <p>Enter Developer's Email address to send instructions</p>
+                        <input type="email" placeholder="Developer's Email" id="developerEmail"><br>
+                        <button onclick="sendMail()">Send Mail</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Integration Modal -->
+            <div id="testIntegrationModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close" onclick="closeTestModal()">×</span>
+                    <div id="testStatus"></div>
+                    <div id="integrationSuccessful" class="hidden">
+                        <img src="./images/confetti.gif" alt="Confetti" style="width: 200px;">
+                        <h3>Integration Successful!</h3>
+                        <button onclick="openAdminPanel()">Explore Admin Panel</button>
+                        <button onclick="startChatting()">Start talking to your chatbot</button>
+                        <div class="social-share">
+                            <a href="#" class="social-icon">Facebook</a>
+                            <a href="#" class="social-icon">Twitter</a>
+                            <a href="#" class="social-icon">LinkedIn</a>
+                        </div>
+                    </div>
                     <div id="integrationFailed" class="hidden">
                         <h3> Integration not yet detected</h3>
                         <p> Please verify that you have completed the integration. </p>
                     </div>
-           </div>
-         </div>
-        
-        <!-- Chatbot Test Frame -->
-        <div id="chatbotTestFrame" class="modal hidden">
-             <div class="chatbot-test-overlay">
-                 <div class="chatbot-topbar">
-                <p> Chatbot not working as intended? <a href="#"> Share feedback</a> </p>
-                 </div>
-                <iframe id="websiteFrame"></iframe>
-                 <div class="chatbot-widget">
-                <!-- Simulated Chatbot widget -->
-                <p>Hello, I am a dummy chatbot!</p>
-                <input type="text" placeholder="Ask me a question">
+                </div>
             </div>
-         </div>
-       </div>
-
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>
